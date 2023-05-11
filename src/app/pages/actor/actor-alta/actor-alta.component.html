@@ -1,0 +1,102 @@
+<div class="container">
+    <main>
+      <div class="py-2 text-center">
+        <h2>Alta Actor</h2>
+        <p class="lead">Complete el siguiente formulario</p>
+      </div>
+  
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Listado de Paises</span>
+            <!-- <span class="badge bg-primary rounded-pill">3</span> -->
+          </h4>
+
+          <app-tabla-paises (cambioPais)="actualizarPais($event)"></app-tabla-paises>
+  
+          <!-- <form class="card p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Promo code">
+              <button type="submit" class="btn btn-secondary">Redeem</button>
+            </div>
+          </form> -->
+        </div>
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Datos Personales</h4>
+          <form [formGroup]="frmActor" class="needs-validation" (ngSubmit)="onSubmit()">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" [ngClass]="{ 'is-invalid': submitted && f['nombre'].errors }">
+                <div *ngIf="submitted && f['nombre'].errors" class="invalid-feedback">
+                  <div *ngIf="f['nombre'].errors['required']">Nombre es requerido</div>
+                </div>
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Apellido</label>
+                <input type="text" class="form-control" formControlName="apellido" [ngClass]="{ 'is-invalid': submitted && f['apellido'].errors }">
+                <div *ngIf="submitted && f['apellido'].errors" class="invalid-feedback">
+                  <div *ngIf="f['apellido'].errors['required']">Apellido es requerido</div>
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="username" class="form-label">Pais</label>
+                <input type="text" class="form-control" formControlName="pais" [ngClass]="{ 'is-invalid': submitted && f['pais'].errors }" readonly>
+                <div *ngIf="submitted && f['pais'].errors" class="invalid-feedback">
+                  <div *ngIf="f['pais'].errors['required']">Pais es requerido</div>
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email" placeholder="you@example.com" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors['required']">Email es requerido</div>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                <label for="country" class="form-label">Genero</label>
+                <select class="form-select" formControlName="genero" [ngClass]="{ 'is-invalid': submitted && f['genero'].errors }">
+                  <option value="">Seleccione...</option>
+                  <option *ngFor="let g of generos" value="{{g}}">{{g}}</option>
+                </select>
+                <div *ngIf="submitted && f['genero'].errors" class="invalid-feedback">
+                  <div *ngIf="f['genero'].errors['required']">Genero es requerido</div>
+                </div>
+              </div>
+
+              <!-- <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <select class="form-select" id="state" required="">
+                  <option value="">Choose...</option>
+                  <option>California</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="zip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="zip" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div> -->
+            </div>
+  
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Finalizar</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  
+    <footer class="my-5 p-4 text-body-secondary text-center text-small">
+      <p class="mb-1">©2023 Machaca Gaston</p>
+    </footer>
+  </div>

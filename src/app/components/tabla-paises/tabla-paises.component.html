@@ -1,0 +1,23 @@
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-dark border-secondary">
+      <thead class="table-light">
+        <tr class="text-center">
+          <th scope="col">Nombre</th>
+          <th scope="col">Capital</th>
+          <th scope="col">Bandera</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of paises" class="text-center" style="cursor: pointer;" (click)="onSelect(p)">
+          <th scope="row" class="text-center">
+              {{p.translations['spa'].common}}
+          </th>
+          <td class="text-center">
+              {{p.capital}}
+          </td>
+          <td><img src="{{p.flags.svg}}" alt="img" class="img-thumbnail rounded mx-auto d-block" style="width: 40px;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

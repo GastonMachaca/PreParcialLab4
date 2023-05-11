@@ -1,0 +1,38 @@
+<div class="table-responsive">
+  <table class="table table-hover table-bordered table-dark border-secondary">
+    <thead class="table-light">
+      <tr class="text-center">
+        <th scope="col">Fecha Estreno</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Cantidad Publico</th>
+        <th scope="col">Foto Pelicula</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of peliculas" class="text-center" style="cursor: pointer;" (click)="onSelect(p)">
+        <th scope="row" class="p-5 text-center">
+          <div class="py-4 px-1">
+            {{p.fechaEstreno}}
+          </div>
+        </th>
+        <td class="p-5 text-center">
+          <div class="py-4 px-1">
+            {{p.nombre}}
+          </div>
+        </td>
+        <td class="p-5 text-center">
+          <div class="py-4 px-1">
+            {{p.tipo}}
+          </div>
+        </td>
+        <td class="p-5 text-center">
+          <div class="py-4 px-1">
+            {{p.cantidadPublico}}
+          </div>
+        </td>
+        <td><img src="{{p.fotoPelicula}}" alt="img" class="img-thumbnail rounded mx-auto d-block" style="width: 100px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

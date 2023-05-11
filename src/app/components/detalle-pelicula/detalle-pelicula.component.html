@@ -1,0 +1,22 @@
+<div *ngIf="pelicula?.fotoPelicula != undefined" class="card" style="width: auto;">
+    <img src="{{pelicula?.fotoPelicula}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul>
+        <li>Fecha de Estreno : {{pelicula?.fechaEstreno}}</li>
+        <li>Nombre : {{pelicula?.nombre}}</li>
+        <li>Tipo : {{pelicula?.tipo}}</li>
+        <li>Cantidad de Publico : {{pelicula?.cantidadPublico}}</li>
+      </ul>
+    </div>
+</div>
+
+<div *ngIf="pelicula?.fotoPelicula == undefined" class="container h-100">
+  <div class="row justify-content-center align-items-center">
+      <div class="row">
+        <h2>Detalle Pelicula</h2>
+      </div>
+      <div class="row">
+        <h5>Seleccione una pelicula de la tabla...</h5>
+      </div>
+  </div>
+</div>
