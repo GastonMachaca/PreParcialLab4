@@ -1,1 +1,113 @@
-<p>pelicula-alta works!</p>
+<div class="container">
+    <main>
+      <div class="py-2 text-center">
+        <h2>Alta Pelicula</h2>
+        <p class="lead">Complete el siguiente formulario</p>
+      </div>
+  
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Listado de Actores</span>
+            <!-- <span class="badge bg-primary rounded-pill">3</span> -->
+          </h4>
+
+          <app-tabla-actor (cambioActor)="actualizarActor($event)"></app-tabla-actor>
+  
+          <!-- <form class="card p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Promo code">
+              <button type="submit" class="btn btn-secondary">Redeem</button>
+            </div>
+          </form> -->
+        </div>
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Datos de la Pelicula</h4>
+          <form [formGroup]="frmPelicula" class="needs-validation" (ngSubmit)="onSubmit()">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" [ngClass]="{ 'is-invalid': submitted && f['nombre'].errors }">
+                <div *ngIf="submitted && f['nombre'].errors" class="invalid-feedback">
+                  <div *ngIf="f['nombre'].errors['required']">Nombre es requerido</div>
+                </div>
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Tipo</label> 
+                <select class="form-select" formControlName="tipo" [ngClass]="{ 'is-invalid': submitted && f['tipo'].errors }">
+                  <option value="">Seleccione...</option>
+                  <option *ngFor="let t of tipos" value="{{t}}">{{t}}</option>
+                </select>
+                <div *ngIf="submitted && f['tipo'].errors" class="invalid-feedback">
+                  <div *ngIf="f['tipo'].errors['required']">Tipo es requerido</div>
+                </div>
+
+              </div>
+  
+              <div class="col-12">
+                <label for="username" class="form-label">Actor Principal</label>
+                <input type="text" class="form-control" formControlName="actor" [ngClass]="{ 'is-invalid': submitted && f['actor'].errors }" readonly>
+                <div *ngIf="submitted && f['actor'].errors" class="invalid-feedback">
+                  <div *ngIf="f['actor'].errors['required']">Actor es requerido</div>
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="email" class="form-label">Fecha de Estreno</label>
+                <input type="date" class="form-control" formControlName="fechaEstreno" placeholder="dd/mm/aaaa" [ngClass]="{ 'is-invalid': submitted && f['fechaEstreno'].errors }">
+                <div *ngIf="submitted && f['fechaEstreno'].errors" class="invalid-feedback">
+                  <div *ngIf="f['fechaEstreno'].errors['required']">La fecha de estreno es requerida</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="publico" class="form-label">Cantidad de Publico</label>
+                <input type="number" class="form-control" formControlName="cantidadPublico" [ngClass]="{ 'is-invalid': submitted && f['cantidadPublico'].errors }">
+                <div *ngIf="submitted && f['cantidadPublico'].errors" class="invalid-feedback">
+                  <div *ngIf="f['cantidadPublico'].errors['required']">La cantidad de publico es requerida</div>
+                  <div *ngIf="f['cantidadPublico'].errors['min']">La cantidad de publico debe ser mayor a 0</div>
+                </div>
+              </div>
+
+                
+              <div class="col-12">
+                <label for="formFile" class="form-label">Foto de Pelicula</label>
+                <input #inputFile class="form-control" type="file" accept=".png, .jpg, .jepg" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': failImagen }">
+                <div class="invalid-feedback">
+                  <div>La foto de la pelicula es requerida</div>
+                </div>
+              </div>
+
+              <!-- <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <select class="form-select" id="state" required="">
+                  <option value="">Choose...</option>
+                  <option>California</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="zip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="zip" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div> -->
+            </div>
+  
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Finalizar</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  
+    <footer class="my-5 p-4 text-body-secondary text-center text-small">
+      <p class="mb-1">©2023 Machaca Gaston</p>
+    </footer>
+  </div>

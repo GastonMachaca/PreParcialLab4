@@ -12,10 +12,6 @@ export class TablaPeliculaComponent implements OnInit {
 
   public peliculas : interfPelicula.Pelicula[] = [];
 
-  // public pelicula? : interfPelicula.Pelicula;
-
-  // @Output() peliculaSeleccionada = new EventEmitter<interfPelicula.Pelicula>();
-
   @Input() peliculaSeleccionada? : interfPelicula.Pelicula;
   @Output() cambioPelicula = new EventEmitter<interfPelicula.Pelicula>();
 
@@ -28,7 +24,6 @@ export class TablaPeliculaComponent implements OnInit {
     
     this.peliculasService.getPeliculas().subscribe( (data : interfPelicula.Pelicula[]) =>{
       this.peliculas = data;
-      console.log(data);
     });
 
   }

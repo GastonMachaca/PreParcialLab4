@@ -21,4 +21,10 @@ export class PeliculasService {
     return collectionData<interfPelicula.Pelicula>(personasCollection);
   }
 
+  public addPeliculas(data : any)
+  {
+      const col = collection(this.firestore,'peliculasDB');
+      return addDoc(col,data);
+  }
+
 }

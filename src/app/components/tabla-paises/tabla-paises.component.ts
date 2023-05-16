@@ -1,7 +1,5 @@
 import { Component,OnInit,Input,Output,EventEmitter } from '@angular/core';
 
-import * as interfPelicula from '../../interfaces/pelicula';
-
 import * as interfPaises from '../../interfaces/pais';
 
 import { PaisesService } from 'src/app/services/paises.service';
@@ -12,8 +10,6 @@ import { PaisesService } from 'src/app/services/paises.service';
   styleUrls: ['./tabla-paises.component.scss']
 })
 export class TablaPaisesComponent implements OnInit {
-
-  public peliculas : interfPelicula.Pelicula[] = [];
 
   public paises : interfPaises.Paises[] = [];
 

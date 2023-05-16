@@ -9,10 +9,13 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { DetallePeliculaComponent } from './components/detalle-pelicula/detalle-pelicula.component';
-import { TablaPaisesComponent } from './components/tabla-paises/tabla-paises.component';
 import { HttpClientModule } from '@angular/common/http';
+import { provideStorage } from '@angular/fire/storage';
+import { getStorage } from 'firebase/storage';
+
+
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     TablaPeliculaComponent,
     BusquedaComponent,
     DetallePeliculaComponent,
+    // TablaActorComponent,
     // TablaPaisesComponent
   ],
   imports: [
@@ -29,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     // AngularFirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,8 @@ import { addDoc, collection, collectionData, Firestore, getDoc, getDocs, updateD
 
 import { Observable } from 'rxjs';
 
+import * as interfActores from '../interfaces/actor';
+
 import { CollectionReference } from 'firebase/firestore'
 
 @Injectable({
@@ -18,5 +20,14 @@ export class ActoresService {
     const actor = collection(this.firestore, 'actores');
 
     addDoc(actor,data);
+  }
+
+  public traerActores() : Observable<interfActores.Actor[]>
+  {
+      const actores = collection(this.firestore,'actores')  as CollectionReference<interfActores.Actor>;
+      const obs = collectionData(actores);
+
+      return obs;
+
   }
 }
